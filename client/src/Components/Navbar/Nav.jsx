@@ -67,7 +67,7 @@ const Nav = () => {
         <div className="nav">
           <div className="navCon">
             <div className="tab">
-              <NavLink className={"navTab"}>
+              <NavLink to={"/home"} className={"navTab"}>
                 {/* Logo */}
                 <img
                   src="https://shopping-app-xx1p.vercel.app/static/media/Sooraj-logo.4ea9ba32a0c93354b8a8.png"
@@ -80,23 +80,13 @@ const Nav = () => {
                 Home
               </NavLink>
             </div>
-            <div className="tab">
-              <NavLink to={"/shopping"} className={"navTab"}>
-                Shopping
-              </NavLink>
-            </div>
             {/* staff data */}
             {userData
-              ? userData.data.role === "staff" && (
+              ? userData.data.role === "manager" && (
                   <>
                     <div className="tab">
                       <NavLink to={"/management"} className={"navTab"}>
-                        Management
-                      </NavLink>
-                    </div>
-                    <div className="tab">
-                      <NavLink to={"/track"} className={"navTab"}>
-                        Track
+                        Manager
                       </NavLink>
                     </div>
                   </>
@@ -126,22 +116,12 @@ const Nav = () => {
                       Home
                     </NavLink>
                   </div>
-                  <div className="avatab">
-                    <NavLink to={"/shopping"} className={"avatabNav"}>
-                      Shopping
-                    </NavLink>
-                  </div>
                   {userData
-                    ? userData.data.role === "staff" && (
+                    ? userData.data.role === "manager" && (
                         <>
                           <div className="avatab">
                             <NavLink to={"/management"} className={"avatabNav"}>
-                              Management
-                            </NavLink>
-                          </div>
-                          <div className="avatab">
-                            <NavLink to={"/track"} className={"avatabNav"}>
-                              Track
+                              Manager
                             </NavLink>
                           </div>
                         </>

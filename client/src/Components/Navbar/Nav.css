@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  width: 1200px;
+  margin: auto;
+}
+
+.nav .navCon {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+
+.nav .navCon .tab {
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 30px;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.nav .navCon .tab .navTab {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav .navCon .tab .navTab:hover {
+  color: rgb(245, 168, 168);
+}
+
+.nav .navCon .tab .navTab img {
+  width: 67px;
+  height: 65px;
+}
+
+.nav .navCon .tab .navTab .avatarIcon {
+  font-size: 30px;
+  color: red;
+  background-color: #fff;
+}
+
+.nav .navCon .tab .avatar {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  position: absolute;
+  right: 0px;
+  display: none;
+}
+
+.nav .navCon .tab:hover .avatar {
+  display: block;
+}
+.nav .navCon .tab .avatar .avatab {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+.nav .navCon .tab .avatar .avatab .avatabNav {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.nav .navCon .tab .avatar .avatab:hover {
+  color: #fff;
+  background-color: rgba(49, 30, 30, 0.425);
+}

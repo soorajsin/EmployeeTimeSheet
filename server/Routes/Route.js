@@ -2,6 +2,7 @@ const expres = require("express");
 const router = expres.Router();
 const userdb = require("../Model/userSchema");
 const bcrypt = require("bcryptjs");
+const authentication = require("../Middleware/authentication");
 
 router.post("/register", async (req, res) => {
   try {
@@ -97,5 +98,53 @@ router.post("/login", async (req, res) => {
     });
   }
 });
+
+router.get("/validator", authentication, async (req, res) => {
+  try {
+    // console.log("auth");
+    if (req.getData) {
+      res.status(201).json({
+        msg: "User authorised",
+        status: 201,
+        data: req.getData
+      });
+    } else {
+      res.status(201).json({
+        msg: "user not authorised",
+        status: 202
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      error: error,
+      msg: "authentication failed"
+    });
+  }
+});
+
+router.post("/signOut", authentication, async (req, res) => {
+  try {
+    // console.log(req.body);
+    const user = req.getData;
+    if (!user) {
+      res.status(400).json({
+        msg: "user not found"
+      });
+    } else {
+      user.tokens = [];
+      const updatedUser = await user.save();
+      res.status(201).json({
+        status: 203,
+        msg: "Successfully log Out user",
+        data: updatedUser
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      msg: "User failed to log Out"
+    });
+  }
+});
+
 
 module.exports = router;
