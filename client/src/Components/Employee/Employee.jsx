@@ -11,7 +11,7 @@ const Employee = () => {
   };
 
   const [userData, setUserData] = useState();
-  console.log("user ", userData);
+  // console.log("user ", userData);
   const fetchedemployee = useCallback(async () => {
     try {
       const data = await fetch(`${api}/fetchedToemployee`, {
@@ -34,6 +34,8 @@ const Employee = () => {
     fetchedemployee();
   }, [fetchedemployee]);
 
+  const deletetimearrange = async () => {};
+
   return (
     <>
       <div className="management">
@@ -49,6 +51,19 @@ const Employee = () => {
                     <div className="showTime">
                       <h4>{addTimeArrange.atimefirst}</h4> -
                       <h4>{addTimeArrange.atimeend}</h4>
+                    </div>
+                    <h3>{addTimeArrange.aprojectname}</h3>
+                    <p>{addTimeArrange.aprojectdec}</p>
+                    <div className="actionCon">
+                      <>
+                        <i
+                          onClick={() =>
+                            deletetimearrange(addTimeArrange._id, index)
+                          }
+                          className="fa-solid fa-delete-left"
+                        ></i>
+                        <i className="fa-solid fa-pen-nib"></i>
+                      </>
                     </div>
                   </div>
                 ))

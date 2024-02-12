@@ -73,7 +73,13 @@
   font-size: 25px;
   transition: 0.3s ease;
   cursor: pointer;
+  display: none;
 }
+
+.management .magCon .show .showData:hover .actionCon i {
+  display: block;
+}
+
 .management .magCon .show .showData .actionCon i:hover {
   color: red;
 }
@@ -85,5 +91,6 @@
 }
 
 .management .magCon .show .showData .showTime h4 {
-  margin-right: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
