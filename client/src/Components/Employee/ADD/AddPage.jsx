@@ -147,7 +147,7 @@ const AddPage = () => {
           </div>
           <div className="form">
             <p>
-              <NavLink to={"/employees"}>Cancel</NavLink>
+              <NavLink to={"/employee"}>Cancel</NavLink>
             </p>
           </div>
         </div>

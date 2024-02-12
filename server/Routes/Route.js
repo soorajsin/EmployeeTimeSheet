@@ -177,4 +177,22 @@ router.post("/addTimeArrange", async (req, res) => {
   }
 });
 
+router.get("/fetchedToemployee", async (req, res) => {
+  try {
+    const fetched = await userdb.find({});
+
+    const timeArrange = fetched.map((user) => user.addTimeArrange);
+    // console.log(timeArrange);
+    res.status(201).json({
+      msg: "fetched data",
+      status: 205,
+      data: timeArrange
+    });
+  } catch (error) {
+    res.status(400).json({
+      msg: "failed to fetch employee"
+    });
+  }
+});
+
 module.exports = router;
