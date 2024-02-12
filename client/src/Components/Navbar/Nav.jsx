@@ -67,7 +67,7 @@ const Nav = () => {
         <div className="nav">
           <div className="navCon">
             <div className="tab">
-              <NavLink to={"/home"} className={"navTab"}>
+              <NavLink to={"/employee"} className={"navTab"}>
                 {/* Logo */}
                 <img
                   src="https://shopping-app-xx1p.vercel.app/static/media/Sooraj-logo.4ea9ba32a0c93354b8a8.png"
@@ -76,8 +76,8 @@ const Nav = () => {
               </NavLink>
             </div>
             <div className="tab">
-              <NavLink to={"/home"} className={"navTab"}>
-                Home
+              <NavLink to={"/employee"} className={"navTab"}>
+                Employee
               </NavLink>
             </div>
             {/* staff data */}
@@ -85,7 +85,7 @@ const Nav = () => {
               ? userData.data.role === "manager" && (
                   <>
                     <div className="tab">
-                      <NavLink to={"/management"} className={"navTab"}>
+                      <NavLink to={"/manager"} className={"navTab"}>
                         Manager
                       </NavLink>
                     </div>
@@ -112,7 +112,7 @@ const Nav = () => {
                     </NavLink>
                   </div>
                   <div className="avatab">
-                    <NavLink to={"/home"} className={"avatabNav"}>
+                    <NavLink to={"/employee"} className={"avatabNav"}>
                       Home
                     </NavLink>
                   </div>
@@ -120,7 +120,7 @@ const Nav = () => {
                     ? userData.data.role === "manager" && (
                         <>
                           <div className="avatab">
-                            <NavLink to={"/management"} className={"avatabNav"}>
+                            <NavLink to={"/manager"} className={"avatabNav"}>
                               Manager
                             </NavLink>
                           </div>

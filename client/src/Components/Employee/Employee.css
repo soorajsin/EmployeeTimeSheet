@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.management {
+  width: 1200px;
+  margin: 100px auto;
+}
+.management .magCon {
+  width: 1200px;
+  padding: 20px;
+}
+
+.management .magCon .add button {
+  padding: 10px;
+  border: none;
+  background-color: #1976d2;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 50px;
+}
+
+.management .magCon .show {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.management .magCon .show .showData {
+  width: 300px;
+  background-color: #eec6c6;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+
+.management .magCon .show .showData img {
+  width: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 200px;
+}
+
+.management .magCon .show .showData h2 {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.management .magCon .show .showData h3 {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.management .magCon .show .showData p {
+  padding: 10px;
+  cursor: pointer;
+  display: none;
+  word-break: break-all;
+}
+.management .magCon .show .showData:hover p {
+  display: block;
+}
+
+.management .magCon .show .showData .actionCon {
+  display: flex;
+  justify-content: space-between;
+}
+
+.management .magCon .show .showData .actionCon i {
+  padding: 10px;
+  font-size: 25px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.management .magCon .show .showData .actionCon i:hover {
+  color: red;
+}

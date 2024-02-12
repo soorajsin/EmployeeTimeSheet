@@ -1,0 +1,11 @@
+.reg .regContainer .form h2 {
+  word-spacing: 30px;
+}
+
+.reg .regContainer .form textarea {
+  width: 400px;
+  font-size: 30px;
+  padding-left: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}

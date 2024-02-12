@@ -50,7 +50,7 @@ const Register = () => {
       } else if (res.status === 203) {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        history("/home");
+        history("/employee");
         window.location.reload();
       }
     }

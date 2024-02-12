@@ -2,8 +2,10 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Components/Account/Login";
 import Register from "./Components/Account/Register";
-import HomePage from "./Components/Home/HomePage";
 import Nav from "./Components/Navbar/Nav";
+import ManagerPage from "./Components/Manager/ManagerPage";
+import Employee from "./Components/Employee/Employee";
+import AddPage from "./Components/Employee/ADD/AddPage";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/employee" element={<Employee />} />
+        <Route path="/manager" element={<ManagerPage />} />
+        <Route path="/addPage" element={<AddPage/>}/>
       </Routes>
     </BrowserRouter>
   );
