@@ -34,6 +34,15 @@ const userSchema = mongoose.Schema({
         required: true
       }
     }
+  ],
+  addTimeArrange: [
+    {
+      adate: String,
+      atimefirst: String,
+      atimeend: String,
+      aprojectname: String,
+      aprojectdec: String
+    }
   ]
 });
 

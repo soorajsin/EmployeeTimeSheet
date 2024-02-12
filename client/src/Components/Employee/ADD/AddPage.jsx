@@ -1,9 +1,12 @@
 import React from "react";
 import "./AddPage.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import apiURL from "../../config";
 
 const AddPage = () => {
+  const api = apiURL.url;
+  const history = useNavigate();
   const [sendData, setSendData] = useState([
     {
       adate: "",
@@ -34,8 +37,24 @@ const AddPage = () => {
       );
       if (emptyFields) {
         alert("Please Enter all fields");
-      }else{
+      } else {
         console.log("add");
+        const data = await fetch(`${api}/addTimeArrange`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ sendData })
+        });
+        const res = await data.json();
+        // console.log(res);
+        if (res.status === 203) {
+          console.log(res);
+          history("/employee");
+          window.location.reload();
+        } else {
+          alert("Not save data");
+        }
       }
     } catch (error) {
       console.log(error);

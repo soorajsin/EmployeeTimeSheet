@@ -146,6 +146,35 @@ router.post("/signOut", authentication, async (req, res) => {
   }
 });
 
-
+router.post("/addTimeArrange", async (req, res) => {
+  try {
+    // console.log(req.body);
+    const { sendData } = req.body;
+    if (!sendData) {
+      res.status(400).json({
+        msg: "send data not found"
+      });
+    } else {
+      const user = await userdb.findOne({});
+      if (!user) {
+        res.status(400).json({
+          msg: "user not found"
+        });
+      } else {
+        user.addTimeArrange.push(...sendData);
+        const updatedUser = await user.save();
+        res.status(201).json({
+          msg: "add to succuss",
+          status: 203,
+          data: updatedUser.addTimeArrange
+        });
+      }
+    }
+  } catch (error) {
+    res.status(400).json({
+      msg: "Failed to add"
+    });
+  }
+});
 
 module.exports = router;
