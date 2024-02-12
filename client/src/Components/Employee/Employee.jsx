@@ -34,7 +34,21 @@ const Employee = () => {
     fetchedemployee();
   }, [fetchedemployee]);
 
-  const deletetimearrange = async () => {};
+  const deletetimearrange = async (addTimeArrangeId, index) => {
+    try {
+      const data = await fetch(`${api}/deletearrangeTime`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ addTimeArrangeId })
+      });
+      const res = await data.json();
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>

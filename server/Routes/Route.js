@@ -195,4 +195,14 @@ router.get("/fetchedToemployee", async (req, res) => {
   }
 });
 
+router.delete("/deletearrangeTime", async (req, res) => {
+  try {
+    console.log(req.body);
+  } catch (error) {
+    res.status(400).json({
+      msg: "Failed to delete"
+    });
+  }
+});
+
 module.exports = router;
