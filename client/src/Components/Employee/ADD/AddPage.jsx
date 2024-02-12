@@ -28,7 +28,15 @@ const AddPage = () => {
 
   const submitToAdd = async () => {
     try {
-        
+      const emptyFields = sendData.some(
+        (form) =>
+          !form.adate || !form.atimefirst || !form.atimeend || !form.aprojectdec
+      );
+      if (emptyFields) {
+        alert("Please Enter all fields");
+      }else{
+        console.log("add");
+      }
     } catch (error) {
       console.log(error);
     }
