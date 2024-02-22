@@ -238,4 +238,47 @@ router.delete("/deletearrangeTime", async (req, res) => {
   }
 });
 
+router.put("/update", async (req, res) => {
+  try {
+    // console.log(req.body);
+    const { sendData, addTimeArrangeId } = req.body;
+    if (!sendData || !addTimeArrangeId) {
+      res.status(400).json({
+        msg: "senddata not found"
+      });
+    } else {
+      const user = await userdb.findOne({});
+      // console.log(user);
+      const index = user.addTimeArrange.findIndex(
+        (addTimeArrange) => addTimeArrange._id.toString() === addTimeArrangeId
+      );
+      if (index === -1) {
+        res.status(400).json({
+          msg: "index not found"
+        });
+      } else {
+        // console.log(index);
+        user.addTimeArrange[index].aprojectname = sendData.aprojectname;
+        user.addTimeArrange[index].adate = sendData.adate;
+        user.addTimeArrange[index].atimefirst = sendData.atimefirst;
+        user.addTimeArrange[index].atimeend = sendData.atimeend;
+        user.addTimeArrange[index].aprojectdec = sendData.aprojectdec;
+        // console.log(user);
+
+        const updatedUser = await user.save();
+        // console.log(updatedUser);
+        res.status(201).json({
+          msg: "update successfully done",
+          status: 202,
+          data: updatedUser
+        });
+      }
+    }
+  } catch (error) {
+    res.status(400).json({
+      msg: "not update"
+    });
+  }
+});
+
 module.exports = router;

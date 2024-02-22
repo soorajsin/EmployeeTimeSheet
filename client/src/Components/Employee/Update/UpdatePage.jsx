@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import apiURL from "../../config";
 
 const UpdatePage = () => {
   const api = apiURL.url;
+  const history = useNavigate();
   const { addTimeArrangeId } = useParams();
   //   console.log(addTimeArrangeId);
   const [sendData, setSendData] = useState({
@@ -45,6 +46,31 @@ const UpdatePage = () => {
   useEffect(() => {
     fetched();
   }, [fetched]);
+
+  const updateData = async (e) => {
+    e.preventDefault();
+    const { aprojectname, adate, atimefirst, atimeend, aprojectdec } = sendData;
+    if (!aprojectname || !adate || !atimefirst || !atimeend || !aprojectdec) {
+      alert("Enter All Fields");
+    } else {
+      const data = await fetch(`${api}/update`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ sendData, addTimeArrangeId })
+      });
+      const res = await data.json();
+      // console.log(res);
+      if (res.status === 202) {
+        console.log(res);
+        history("/employee");
+        window.location.reload();
+      } else {
+        alert("Not Update");
+      }
+    }
+  };
 
   return (
     <>
@@ -110,7 +136,7 @@ const UpdatePage = () => {
             ></textarea>
           </div>
           <div className="form">
-            <button>Update</button>
+            <button onClick={updateData}>Update</button>
           </div>
           <div className="form">
             <p>
