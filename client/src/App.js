@@ -6,6 +6,7 @@ import Nav from "./Components/Navbar/Nav";
 import ManagerPage from "./Components/Manager/ManagerPage";
 import Employee from "./Components/Employee/Employee";
 import AddPage from "./Components/Employee/ADD/AddPage";
+import UpdatePage from "./Components/Employee/Update/UpdatePage";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/employee" element={<Employee />} />
         <Route path="/manager" element={<ManagerPage />} />
-        <Route path="/addPage" element={<AddPage/>}/>
+        <Route path="/addPage" element={<AddPage />} />
+        <Route path="/update/:addTimeArrangeId" element={<UpdatePage />} />
       </Routes>
     </BrowserRouter>
   );

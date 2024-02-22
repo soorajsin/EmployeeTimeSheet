@@ -44,10 +44,20 @@ const Employee = () => {
         body: JSON.stringify({ addTimeArrangeId })
       });
       const res = await data.json();
-      console.log(res);
+      // console.log(res);
+      if (res.status === 201) {
+        window.location.reload();
+        console.log(res);
+      } else {
+        alert("Not delete");
+      }
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const update = (addTimeArrangeId, index) => {
+    history(`/update/${addTimeArrangeId}`);
   };
 
   return (
@@ -76,7 +86,10 @@ const Employee = () => {
                           }
                           className="fa-solid fa-delete-left"
                         ></i>
-                        <i className="fa-solid fa-pen-nib"></i>
+                        <i
+                          onClick={() => update(addTimeArrange._id, index)}
+                          className="fa-solid fa-pen-nib"
+                        ></i>
                       </>
                     </div>
                   </div>

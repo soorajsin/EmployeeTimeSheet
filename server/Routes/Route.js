@@ -197,7 +197,40 @@ router.get("/fetchedToemployee", async (req, res) => {
 
 router.delete("/deletearrangeTime", async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
+    const { addTimeArrangeId } = req.body;
+    if (!addTimeArrangeId) {
+      res.status(400).json({
+        msg: "addTimeArrangeId not found"
+      });
+    } else {
+      const user = await userdb.findOne({});
+      if (!user) {
+        res.status(400).json({
+          msg: "user not foun"
+        });
+      } else {
+        // console.log(user);
+        const index = user.addTimeArrange.find(
+          (addTimeArrange) => addTimeArrange._id.toString() === addTimeArrangeId
+        );
+        if (index === -1) {
+          res.status(400).json({
+            msg: "entry not found or token invalid"
+          });
+        } else {
+          // console.log(entry);
+          user.addTimeArrange.splice(index, 1);
+
+          await user.save();
+          res.status(201).json({
+            msg: "successfully deleted",
+            status: 201,
+            data: user
+          });
+        }
+      }
+    }
   } catch (error) {
     res.status(400).json({
       msg: "Failed to delete"
