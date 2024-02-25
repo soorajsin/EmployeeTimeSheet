@@ -281,4 +281,48 @@ router.put("/update", async (req, res) => {
   }
 });
 
+router.post("/rating", async (req, res) => {
+  try {
+    // console.log(req.body);
+    const { sendData, addTimeArrangeId } = req.body;
+    if (!sendData || !addTimeArrangeId) {
+      res.status(400).json({
+        msg: "plz fill all fields"
+      });
+    } else {
+      const user = await userdb.findOne({});
+      if (!user) {
+        res.status(400).json({
+          msg: "user not found"
+        });
+      } else {
+        // console.log(user);
+        const entryIndex = user.addTimeArrange.findIndex(
+          (addTimeArrange) => addTimeArrange._id.toString() === addTimeArrangeId
+        );
+        if (entryIndex === -1) {
+          res.status(400).json({
+            msg: "entry not found"
+          });
+        } else {
+          // console.log(entry);
+
+          user.addTimeArrange[entryIndex].rating = sendData.rating;
+
+          await user.save();
+          res.status(201).json({
+            status:205,
+            msg: "successfully add rating",
+            data: user
+          });
+        }
+      }
+    }
+  } catch (error) {
+    res.status(400).json({
+      msg: "rating error"
+    });
+  }
+});
+
 module.exports = router;

@@ -41,7 +41,8 @@ const userSchema = mongoose.Schema({
       atimefirst: String,
       atimeend: String,
       aprojectname: String,
-      aprojectdec: String
+      aprojectdec: String,
+      rating:String
     }
   ]
 });

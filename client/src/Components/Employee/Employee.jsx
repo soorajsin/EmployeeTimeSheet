@@ -78,19 +78,31 @@ const Employee = () => {
                     </div>
                     <h3>{addTimeArrange.aprojectname}</h3>
                     <p>{addTimeArrange.aprojectdec}</p>
+                    {addTimeArrange.rating ? (
+                      <p>Rating: {addTimeArrange.rating}</p>
+                    ) : null}
                     <div className="actionCon">
-                      <>
+                      {addTimeArrange.rating ? (
                         <i
                           onClick={() =>
                             deletetimearrange(addTimeArrange._id, index)
                           }
                           className="fa-solid fa-delete-left"
                         ></i>
-                        <i
-                          onClick={() => update(addTimeArrange._id, index)}
-                          className="fa-solid fa-pen-nib"
-                        ></i>
-                      </>
+                      ) : (
+                        <>
+                          <i
+                            onClick={() =>
+                              deletetimearrange(addTimeArrange._id, index)
+                            }
+                            className="fa-solid fa-delete-left"
+                          ></i>
+                          <i
+                            onClick={() => update(addTimeArrange._id, index)}
+                            className="fa-solid fa-pen-nib"
+                          ></i>
+                        </>
+                      )}
                     </div>
                   </div>
                 ))

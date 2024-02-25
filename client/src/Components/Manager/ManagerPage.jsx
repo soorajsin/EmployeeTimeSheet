@@ -23,6 +23,45 @@ const ManagerPage = () => {
     fetched();
   }, [fetched]);
 
+  const [sendData, setSendData] = useState({
+    rating: ""
+  });
+
+  const changeData = (e) => {
+    setSendData({
+      ...sendData,
+      [e.target.name]: e.target.value
+    });
+  };
+  console.log(sendData);
+
+  const submitRating = async (addTimeArrangeId, index) => {
+    // e.preventDefault();
+    const { rating } = sendData;
+    if (!rating || !addTimeArrangeId) {
+      alert("Please give rating");
+    } else if (rating < 1 || rating > 5) {
+      alert("Rating must be between 1 and 5");
+    } else {
+      console.log("done");
+      const data = await fetch(`${api}/rating`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ sendData, addTimeArrangeId })
+      });
+      const res = await data.json();
+      // console.log(res);
+      if (res.status === 205) {
+        console.log(res);
+        window.location.reload();
+      } else {
+        alert("Not send rating");
+      }
+    }
+  };
+
   return (
     <>
       <div className="management">
@@ -42,10 +81,20 @@ const ManagerPage = () => {
                       <>
                         <input
                           type="number"
+                          name="rating"
+                          value={sendData.rating}
+                          onChange={changeData}
                           min={"0"}
                           max={"5"}
                           placeholder="Enter your review"
                         />
+                        <button
+                          onClick={() =>
+                            submitRating(addTimeArrange._id, index)
+                          }
+                        >
+                          Submit
+                        </button>
                       </>
                     </div>
                   </div>
