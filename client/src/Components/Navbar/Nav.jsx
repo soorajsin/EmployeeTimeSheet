@@ -66,32 +66,73 @@ const Nav = () => {
       <Toolbar>
         <div className="nav">
           <div className="navCon">
-            <div className="tab">
-              <NavLink to={"/employee"} className={"navTab"}>
-                {/* Logo */}
-                <img
-                  src="https://shopping-app-xx1p.vercel.app/static/media/Sooraj-logo.4ea9ba32a0c93354b8a8.png"
-                  alt="logo"
-                />
-              </NavLink>
-            </div>
-            <div className="tab">
-              <NavLink to={"/employee"} className={"navTab"}>
-                Employee
-              </NavLink>
-            </div>
+            {userData ? (
+              userData.data.role === "employee" && (
+                <>
+                  <div className="tab">
+                    <NavLink to={"/employee"} className={"navTab"}>
+                      {/* Logo */}
+                      <img
+                        src="https://shopping-app-xx1p.vercel.app/static/media/Sooraj-logo.4ea9ba32a0c93354b8a8.png"
+                        alt="logo"
+                      />
+                    </NavLink>
+                  </div>
+                  <div className="tab">
+                    <NavLink to={"/employee"} className={"navTab"}>
+                      Employee
+                    </NavLink>
+                  </div>
+                </>
+              )
+            ) : (
+              <>
+                <div className="tab">
+                  <NavLink className={"navTab"}>
+                    <img
+                      src="https://shopping-app-xx1p.vercel.app/static/media/Sooraj-logo.4ea9ba32a0c93354b8a8.png"
+                      alt="logo"
+                    />
+                  </NavLink>
+                </div>
+                <div className="tab">
+                  <NavLink className={"navTab"}>Employee</NavLink>
+                </div>
+              </>
+            )}
+
             {/* staff data */}
-            {userData
-              ? userData.data.role === "manager" && (
-                  <>
-                    <div className="tab">
-                      <NavLink to={"/manager"} className={"navTab"}>
-                        Manager
-                      </NavLink>
-                    </div>
-                  </>
-                )
-              : ""}
+            {userData ? (
+              userData.data.role === "manager" && (
+                <>
+                  <div className="tab">
+                    <NavLink to={"/employee"} className={"navTab"}>
+                      {/* Logo */}
+                      <img
+                        src="https://shopping-app-xx1p.vercel.app/static/media/Sooraj-logo.4ea9ba32a0c93354b8a8.png"
+                        alt="logo"
+                      />
+                    </NavLink>
+                  </div>
+                  <div className="tab">
+                    <NavLink to={"/employee"} className={"navTab"}>
+                      Employee
+                    </NavLink>
+                  </div>
+                  <div className="tab">
+                    <NavLink to={"/manager"} className={"navTab"}>
+                      Manager
+                    </NavLink>
+                  </div>
+                </>
+              )
+            ) : (
+              <>
+                <div className="tab">
+                  <NavLink className={"navTab"}>Employee</NavLink>
+                </div>
+              </>
+            )}
 
             <div className="tab">
               <NavLink to={"/"} className={"navTab"}>
@@ -111,14 +152,29 @@ const Nav = () => {
                       {userData ? userData.data.email : "Email"}
                     </NavLink>
                   </div>
-                  <div className="avatab">
-                    <NavLink to={"/employee"} className={"avatabNav"}>
-                      Home
-                    </NavLink>
-                  </div>
+                  {userData ? (
+                    userData.data.role === "employee" && (
+                      <div className="avatab">
+                        <NavLink to={"/employee"} className={"avatabNav"}>
+                          Employee
+                        </NavLink>
+                      </div>
+                    )
+                  ) : (
+                    <div className="avatab">
+                      <NavLink className={"avatabNav"}>Employee</NavLink>
+                    </div>
+                  )}
+
+                  {/* manager */}
                   {userData
                     ? userData.data.role === "manager" && (
                         <>
+                          <div className="avatab">
+                            <NavLink to={"/employee"} className={"avatabNav"}>
+                              Employee
+                            </NavLink>
+                          </div>
                           <div className="avatab">
                             <NavLink to={"/manager"} className={"avatabNav"}>
                               Manager
@@ -127,9 +183,15 @@ const Nav = () => {
                         </>
                       )
                     : ""}
-                  <div className="avatab" onClick={signOut}>
-                    <NavLink className={"avatabNav"}>Log Out</NavLink>
-                  </div>
+
+                  {/* log out */}
+                  {userData
+                    ? userData.data && (
+                        <div className="avatab" onClick={signOut}>
+                          <NavLink className={"avatabNav"}>Log Out</NavLink>
+                        </div>
+                      )
+                    : ""}
                 </div>
               </div>
             </div>
