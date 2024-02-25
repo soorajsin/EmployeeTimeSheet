@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import apiURL from "../config";
+import "./ManagerPage.css";
 
 const ManagerPage = () => {
   const api = apiURL.url;
@@ -39,7 +40,12 @@ const ManagerPage = () => {
                     <p>{addTimeArrange.aprojectdec}</p>
                     <div className="actionCon">
                       <>
-                        
+                        <input
+                          type="number"
+                          min={"0"}
+                          max={"5"}
+                          placeholder="Enter your review"
+                        />
                       </>
                     </div>
                   </div>
