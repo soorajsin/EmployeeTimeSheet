@@ -126,14 +126,7 @@ const Nav = () => {
                   </div>
                 </>
               )
-            ) : (
-              <>
-                ""
-                {/* <div className="tab">
-                  <NavLink className={"navTab"}>Employee</NavLink>
-                </div> */}
-              </>
-            )}
+            ) : ""}
 
             <div className="tab">
               <NavLink to={"/"} className={"navTab"}>
