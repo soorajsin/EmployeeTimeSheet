@@ -128,9 +128,10 @@ const Nav = () => {
               )
             ) : (
               <>
-                <div className="tab">
+                ""
+                {/* <div className="tab">
                   <NavLink className={"navTab"}>Employee</NavLink>
-                </div>
+                </div> */}
               </>
             )}
 
