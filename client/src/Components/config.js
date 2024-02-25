@@ -1,5 +1,8 @@
 const config = {
-  url: "http://localhost:4000"
+  url: "https://employee-time-sheet-server.vercel.app"
 };
 
 export default config;
+
+// http://localhost:4000
+// https://employee-time-sheet-server.vercel.app/
